@@ -1900,4 +1900,32 @@ public class SharedConfig {
 
 
 
+    // ========================
+    // PurelyGram Settings
+    // ========================
+    public static boolean hideOnlineStatus = false;
+    public static boolean antiDeleteMessages = false;
+    public static boolean hideTypingStatus = false;
+    public static boolean hideReadStatus = false;
+    public static boolean ghostModeStories = false;
+
+    public static void savePurelyConfig() {
+        SharedPreferences pref = ApplicationLoader.applicationContext.getSharedPreferences("purelyconfig", Activity.MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putBoolean("hideOnlineStatus", hideOnlineStatus);
+        editor.putBoolean("antiDeleteMessages", antiDeleteMessages);
+        editor.putBoolean("hideTypingStatus", hideTypingStatus);
+        editor.putBoolean("hideReadStatus", hideReadStatus);
+        editor.putBoolean("ghostModeStories", ghostModeStories);
+        editor.apply();
+    }
+
+    public static void loadPurelyConfig() {
+        SharedPreferences pref = ApplicationLoader.applicationContext.getSharedPreferences("purelyconfig", Activity.MODE_PRIVATE);
+        hideOnlineStatus = pref.getBoolean("hideOnlineStatus", false);
+        antiDeleteMessages = pref.getBoolean("antiDeleteMessages", false);
+        hideTypingStatus = pref.getBoolean("hideTypingStatus", false);
+        hideReadStatus = pref.getBoolean("hideReadStatus", false);
+        ghostModeStories = pref.getBoolean("ghostModeStories", false);
+    }
 }
