@@ -848,6 +848,9 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
             case 22:
                 FileLog.cleanupLogs();
                 break;
+            case 100:
+                presentFragment(new PurelyGramSettingsActivity());
+                break;
             case 23: {
                 if (MessagesController.getInstance(currentAccount).isFrozen()) {
                     AccountFrozenAlert.show(currentAccount);
