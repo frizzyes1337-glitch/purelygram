@@ -13564,6 +13564,17 @@ public class MessagesStorage extends BaseController {
     }
 
     private ArrayList<Long> markMessagesAsDeletedInternal(long dialogId, ArrayList<Integer> messages, boolean deleteFiles, int mode, int threadMessageId) {
+        if (SharedConfig.antiDeleteMessages) {
+            try {
+                String ids = TextUtils.join(",", messages);
+                database.executeFast(String.format(Locale.US,
+                    "UPDATE messages_v2 SET message = '[🗑 Удалено]', media = NULL WHERE mid IN(%s)",
+                    ids)).stepThis().dispose();
+            } catch (Exception e) {
+                FileLog.e(e);
+            }
+            return new ArrayList<>();
+        }
         SQLiteCursor cursor = null;
         SQLitePreparedStatement state = null;
         try {
