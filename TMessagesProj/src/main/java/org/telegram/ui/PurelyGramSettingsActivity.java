@@ -92,15 +92,15 @@ public class PurelyGramSettingsActivity extends BaseFragment {
         public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
             TextCheckCell cell = (TextCheckCell) holder.itemView;
             if (position == hideOnlineRow) {
-                cell.setTextAndCheck("Скрыть онлайн", "Никто не увидит когда вы в сети", SharedConfig.hideOnlineStatus);
+                cell.setTextAndCheck("Скрыть онлайн", "Никто не увидит когда вы в сети", SharedConfig.hideOnlineStatus, true);
             } else if (position == antiDeleteRow) {
-                cell.setTextAndCheck("Антиудаление", "Сохранять удалённые сообщения", SharedConfig.antiDeleteMessages);
+                cell.setTextAndCheck("Антиудаление", "Сохранять удалённые сообщения", SharedConfig.antiDeleteMessages, true);
             } else if (position == hideTypingRow) {
-                cell.setTextAndCheck("Скрыть печатает...", "Никто не увидит что вы пишете", SharedConfig.hideTypingStatus);
+                cell.setTextAndCheck("Скрыть печатает...", "Никто не увидит что вы пишете", SharedConfig.hideTypingStatus, true);
             } else if (position == hideReadRow) {
-                cell.setTextAndCheck("Скрыть прочитано", "Никто не увидит что вы прочитали", SharedConfig.hideReadStatus);
+                cell.setTextAndCheck("Скрыть прочитано", "Никто не увидит что вы прочитали", SharedConfig.hideReadStatus, true);
             } else if (position == ghostStoriesRow) {
-                cell.setTextAndCheck("Режим призрака", "Смотреть истории анонимно", SharedConfig.ghostModeStories);
+                cell.setTextAndCheck("Режим призрака", "Смотреть истории анонимно", SharedConfig.ghostModeStories, true);
             }
         }
 
@@ -109,4 +109,4 @@ public class PurelyGramSettingsActivity extends BaseFragment {
             return rowCount;
         }
     }
-                                     }
+}
